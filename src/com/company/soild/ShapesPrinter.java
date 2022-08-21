@@ -1,12 +1,20 @@
 package com.company.soild;
 
+
 import java.util.List;
 
 public class ShapesPrinter {
-    public String json(int sum ){
-        return "{shape_sum: %s}".formatted(sum);
+
+    private final IAreaCalculator areaCalculator;
+
+    public ShapesPrinter(IAreaCalculator areaCalculator) {
+        this.areaCalculator = areaCalculator;
     }
-    public String csv(int sum){
-        return "{shape_sum:,%s}".formatted(sum);
+
+    public String json(List<Shape> shapes){
+        return "{shape_sum: %s}".formatted(areaCalculator.sum( shapes));
+    }
+    public String csv(List<Shape> shapes){
+        return "{shape_sum:,%s}".formatted(shapes);
     }
 }
